@@ -49,7 +49,7 @@ alert('ok: ' + id);
 <?php
 echo '<input type="button" name="login" value="login" onclick="javascript:login();"/>';
 
-echo '<input type="button" name="get comment" value="get comment" onclick="javascript:comment(url);"/>';
+echo '<input type="button" name="post photo" value="post photo" onclick="javascript:function photoToPage(url);"/>';
 
 ?>
 
