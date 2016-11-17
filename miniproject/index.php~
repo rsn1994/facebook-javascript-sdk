@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 
 <html>
 <head>
@@ -17,7 +17,7 @@ $data =$_POST['data'];
         <script>
         window.fbAsyncInit = function() {
                 FB.init({
-                appId: '352671538404366',
+                appId: '{APP-ID}',
                 status: true,
                 cookie: true,
                 xfbml: true
@@ -67,7 +67,7 @@ FB.api('/me/feed', 'post', { link: 'http://www.google.com' }, function(response)
 }
 function upload()
 {
-FB.api('/me/photos', 'post', { url: 'https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-1/c28.31.160.160/p200x200/14329988_1150582625022337_3623852250086344957_n.jpg?oh=bac9cd1974a9fdeb283cc93ef7c7df90&oe=586D2897' }, function(response) {
+FB.api('/me/photos', 'post', { url: '{URL}' }, function(response) {
   if (!response || response.error) {
     alert('Error occured');
   } else {
@@ -78,12 +78,12 @@ FB.api('/me/photos', 'post', { url: 'https://scontent-amt2-1.xx.fbcdn.net/v/t1.0
 function postToPage(){
           
 
-  FB.api('/1493608767521631/feed', 'post', { message: 'hello fb-page world', access_token:'EAAFAwL3E3A4BAEn0aBk6YNUJ14xXi4W6upQuCpguZC4t6bs7dqU7iNOOImbdA7T4OmAA9D6mPwvuUxkGrZCNC8sRyN5ILrL61pWYlfgfeqBgVL2r5lWoCqEXR1Y7dZAzZCpep4QLzqbMcJkzH37b2rkZCWNxSaYnCAe6i69nKBwZDZD' },
+  FB.api('/{PAGE-ID}/feed', 'post', { message: 'hello fb-page world', access_token:'{ACCESSTOKEN}' },
     function(res) { console.log(res) }
   );
 }
 function photoToPage(){
-  FB.api('/1493608767521631/photos', 'post', { url:'http://24.media.tumblr.com/tumblr_m1ttif5puW1qcrr0lo1_500.png', message:'first', access_token:'EAAFAwL3E3A4BAEn0aBk6YNUJ14xXi4W6upQuCpguZC4t6bs7dqU7iNOOImbdA7T4OmAA9D6mPwvuUxkGrZCNC8sRyN5ILrL61pWYlfgfeqBgVL2r5lWoCqEXR1Y7dZAzZCpep4QLzqbMcJkzH37b2rkZCWNxSaYnCAe6i69nKBwZDZD' },
+  FB.api('/{PAGE-ID}/photos', 'post', { url:'URL', message:'first', access_token:'{ACCESSTOKEN}' },
     function(res) {
 id=res.post_id;
 alert('ok: ' + id);
@@ -95,11 +95,11 @@ function comment(){
           
 var like=0;
 var mesalt="";
-  FB.api('1493608767521631_1822311127984725?fields=comments', {access_token:'EAAFAwL3E3A4BAEn0aBk6YNUJ14xXi4W6upQuCpguZC4t6bs7dqU7iNOOImbdA7T4OmAA9D6mPwvuUxkGrZCNC8sRyN5ILrL61pWYlfgfeqBgVL2r5lWoCqEXR1Y7dZAzZCpep4QLzqbMcJkzH37b2rkZCWNxSaYnCAe6i69nKBwZDZD'},
+  FB.api('POSTID'?fields=comments', {access_token:'{ACCESSTOKEN}'},
     function(res) {
 //console.log(res.comments.data); 
 for (i in res.comments.data) {
- FB.api('/'+res.comments.data[i].id+'?fields=like_count', {access_token:'EAAFAwL3E3A4BAEn0aBk6YNUJ14xXi4W6upQuCpguZC4t6bs7dqU7iNOOImbdA7T4OmAA9D6mPwvuUxkGrZCNC8sRyN5ILrL61pWYlfgfeqBgVL2r5lWoCqEXR1Y7dZAzZCpep4QLzqbMcJkzH37b2rkZCWNxSaYnCAe6i69nKBwZDZD'},
+ FB.api('/'+res.comments.data[i].id+'?fields=like_count', {access_token:'{ACCESSTOKEN}'},
     function(resp) {
 
 if(resp.like_count>like)
@@ -141,7 +141,7 @@ console.log(like);
 <br>
 <button onclick="javascript:photoToPage();">post photo on page</button>
 <br>
-<button onclick="javascript:comment();">comment</button>
+<button onclick="javascript:comment();">GET MOST LIKED comment</button>
 </body>
 
 </html> 
